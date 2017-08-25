@@ -8,7 +8,7 @@ prof = np.loadtxt("20131027_02_comp1.lsd")
 bb1=-138 # left bound of the line profile;
 bb2=-35  # right bound of the line profile;
 bound_inten=0.98779
-
+x_lin = 0.567 # liner limb darkening coefficient
 
 xx = prof[:,0]
 yy = prof[:,1]
@@ -40,7 +40,7 @@ std=np.sqrt(std/len(xx))
 
 
 print('std = ', std)
-print('S/N = ', np.mean(yy)/std)
+print('SNR = ', np.mean(yy)/std)
 
 n_samples=50
 yys = np.zeros([n_samples, len(yy)])
@@ -87,7 +87,7 @@ print(min_ff)
 print('mean x_min = ', np.mean(min_ff))
 print('std x_min = ', np.std(min_ff))
 
-x_lin = 0.567
+
 vsini=np.zeros(n_samples)
 for i in range(0, n_samples):
     vsini[i] = (1/np.mean(min_ff[i]))*(0.610+0.062*x_lin+0.027*x_lin**2+0.012*x_lin**3+0.004*x_lin**4)
